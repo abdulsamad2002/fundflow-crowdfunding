@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import SessionWrapper from "@/Components/SessionWrapper";
-import SessionWrapper from "@/Components/SessionWrapper";
 
 
 const geistSans = Geist({
