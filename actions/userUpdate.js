@@ -58,6 +58,25 @@ export async function profileFetcher(username) {
   }
 }
 
+
+export async function profileObjectGiver(username) {
+  try {
+    await connector();
+    console.log(username)
+    const user = await User.findOne({ username }).lean();
+    if (!user) {
+      return { success: false, error: "User not found" };
+    }
+
+    return JSON.parse(JSON.stringify(user));
+  } catch (error) {
+    console.error("Profile fetch error:", error);
+    return { success: false, error: error.message };
+  }
+}
+
+
+
 export async function fullProfileFetcher(username) {
   try {
     await connector();

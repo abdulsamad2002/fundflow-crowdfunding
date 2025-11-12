@@ -8,12 +8,14 @@ import { useSession } from "next-auth/react";
 import Paymenter from "@/actions/payment";
 import { profileFetcher } from "@/actions/userUpdate";
 import { useRouter } from "next/navigation";
+import { profileObjectGiver } from "@/actions/userUpdate";
 
 const Page = ({ params }) => {
   const unwrappedParams = use(params);
   const { data: session } = useSession();
   const [records, setrecords] = useState([]);
   const [profile, setprofile] = useState();
+  const [name, setname] = useState()
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -22,6 +24,9 @@ const Page = ({ params }) => {
     amount: "",
     reciever: unwrappedParams.username,
   });
+
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,6 +66,10 @@ const Page = ({ params }) => {
   async function pfp() {
     const username = unwrappedParams.username;
     const profile = profileFetcher(username);
+    const profileObject = await profileObjectGiver(username)
+    // console.log(profileObject.name)
+    const name = profileObject.name
+    setname(name)
     const pfpUrl = await profile;
     setprofile(pfpUrl.data);
   }
@@ -91,9 +100,9 @@ const Page = ({ params }) => {
 
         <div className="text-center md:text-left">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent mb-2">
-            @{unwrappedParams.username}
+            {name}
           </h1>
-          <p className="text-gray-400 text-lg">Support this creator</p>
+          <p className="text-[#d6d5d5] text-lg">@{unwrappedParams.username}</p>
         </div>
       </div>
 
