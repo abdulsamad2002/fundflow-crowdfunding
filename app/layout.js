@@ -30,7 +30,6 @@ export default function RootLayout({ children }) {
         <SessionWrapper>
           <Navbar />
           {children}
-          <Toaster />
           <Footer />
         </SessionWrapper>
       </body>
