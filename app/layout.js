@@ -4,8 +4,8 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import SessionWrapper from "@/Components/SessionWrapper";
+import SessionWrapper from "@/Components/SessionWrapper";
 
-import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
