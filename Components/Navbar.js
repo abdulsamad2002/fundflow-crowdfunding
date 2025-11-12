@@ -1,17 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "./ui/button";
+import { Button } from "@Components/ui/button";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { toast } from "sonner";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
