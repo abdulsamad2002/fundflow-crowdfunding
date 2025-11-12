@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Button } from "@Components/ui/button";
+import { Button } from "@/Components/ui/button";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { Menu, X } from "lucide-react";
