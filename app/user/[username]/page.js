@@ -50,7 +50,7 @@ const Page = ({ params }) => {
       );
       const data = await res.json();
       if (data.length === 0) {
-        router.replace("/not-found.js");
+        router.replace("/notfound.js");
       }
       setrecords(data);
     } catch (err) {
