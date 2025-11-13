@@ -15,7 +15,7 @@ const Page = ({ params }) => {
   const { data: session } = useSession();
   const [records, setrecords] = useState([]);
   const [profile, setprofile] = useState();
-  const [name, setname] = useState()
+  const [name, setname] = useState();
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -24,9 +24,6 @@ const Page = ({ params }) => {
     amount: "",
     reciever: unwrappedParams.username,
   });
-
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,22 +51,33 @@ const Page = ({ params }) => {
         `/api/payment?username=${encodeURIComponent(username)}`
       );
       const data = await res.json();
-      if (data.length === 0) {
-        router.replace("/notfound.js");
-      }
+      // console.log(data)
+      // if (data.length === 0) {
+      //   // router.replace("/notfound.js");
+      // }
+      // redirector(username);
       setrecords(data);
     } catch (err) {
       console.error(err);
     }
   }
 
+  async function redirector(username) {
+    const res = await profileObjectGiver(username);
+    // console.log(res)
+    
+  }
+
   async function pfp() {
     const username = unwrappedParams.username;
     const profile = profileFetcher(username);
-    const profileObject = await profileObjectGiver(username)
-    // console.log(profileObject.name)
-    const name = profileObject.name
-    setname(name)
+    const profileObject = await profileObjectGiver(username);
+    console.log(profileObject.success)
+    if (profileObject.success === false) {
+      router.replace("/notfound.js");
+    }
+    const name = profileObject.returning.name;
+    setname(name);
     const pfpUrl = await profile;
     setprofile(pfpUrl.data);
   }

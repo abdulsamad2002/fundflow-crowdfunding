@@ -67,8 +67,9 @@ export async function profileObjectGiver(username) {
     if (!user) {
       return { success: false, error: "User not found" };
     }
-
-    return JSON.parse(JSON.stringify(user));
+    
+    const returning= JSON.parse(JSON.stringify(user))
+    return {success: true , returning }
   } catch (error) {
     console.error("Profile fetch error:", error);
     return { success: false, error: error.message };
