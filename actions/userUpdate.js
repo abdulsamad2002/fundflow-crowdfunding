@@ -12,7 +12,7 @@ export async function profileUpdater(newData) {
     }
 
     const allowedFields = [
-      "coverpic",
+      "coverPic",
       "likes",
       "location",
       "bio",
